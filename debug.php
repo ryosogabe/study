@@ -19,6 +19,8 @@ class Dog extends Animal
   }
 }
 
+var_dump('----------1-----------');
+
 class MechaDog extends Dog
 {
   private $data;
@@ -32,6 +34,8 @@ class MechaDog extends Dog
       'chef' => 'apache'
     );
   }
+
+var_dump('----------2-----------');
 
   public function proc($arg)
   {
@@ -54,8 +58,12 @@ class MechaDog extends Dog
   }
 }
 
+var_dump('----------3-----------');
+
 $mdog = new MechaDog('tom');
 $mdog->bark();
 echo $mdog->name . PHP_EOL;
 echo $mdog->age . PHP_EOL;
 $mdog->proc("GET /bsd HTTP/1.1");
+
+var_dump('----------4-----------');
