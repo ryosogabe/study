@@ -16,10 +16,10 @@ class Dog extends Animal
   {
     $this->name = $name;
     $this->age = $age;
+    var_dump('-------------1--------------');
+    var_dump('-------------2--------------');
   }
 }
-
-var_dump('----------1-----------');
 
 class MechaDog extends Dog
 {
@@ -28,23 +28,25 @@ class MechaDog extends Dog
   public function __construct($name, $age=1)
   {
     parent::__construct($name);
+    var_dump('-------------3--------------');
     $this->data = array(
       'apache' => 'apache',
       'bsd' => 'mit',
       'chef' => 'apache'
+      var_dump('-------------4--------------');
     );
   }
-
-var_dump('----------2-----------');
 
   public function proc($arg)
   {
     $path = explode("/", explode(" ", $arg)[0]);
+    var_dump('-------------5---------------');
     array_shift($path);
     if( is_null($path) ) {
       $keys = array();
       while (list($key, $val) = each($this->data)) {
         array_push($keys, $key);
+        var_dump('-------------6--------------');
       }
       var_dump($keys);
     }
@@ -54,16 +56,15 @@ var_dump('----------2-----------');
     }
     else {
       echo $path[0] . "=>" . $this->data[$path[0]] . PHP_EOL;
+      var_dump('-------------7--------------');
     }
   }
 }
 
-var_dump('----------3-----------');
-
 $mdog = new MechaDog('tom');
 $mdog->bark();
+var_dump('-------------8--------------');
 echo $mdog->name . PHP_EOL;
 echo $mdog->age . PHP_EOL;
 $mdog->proc("GET /bsd HTTP/1.1");
 
-var_dump('----------4-----------');
