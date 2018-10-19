@@ -35,9 +35,7 @@ class MechaDog extends Dog
 
   public function proc($arg)
   {
-    $path = explode("/", explode(" ", $arg)[0];
-      var_dump($path);
-      //この変数の値は「GET」となっているが、「bsd=>mit」となるべき
+    $path = explode("/", explode(" ", $arg)[1]);
     array_shift($path);
     if( is_null($path) ) {
       $keys = array();
