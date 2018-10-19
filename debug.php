@@ -16,7 +16,6 @@ class Dog extends Animal
   {
     $this->name = $name;
     $this->age = $age;
-    var_dump('-------------1--------------');
   }
 }
 
@@ -27,7 +26,6 @@ class MechaDog extends Dog
   public function __construct($name, $age=1)
   {
     parent::__construct($name);
-    var_dump('-------------2--------------');
     $this->data = array(
       'apache' => 'apache',
       'bsd' => 'mit',
@@ -37,17 +35,16 @@ class MechaDog extends Dog
 
   public function proc($arg)
   {
-    $path = explode("/", explode(" ", $arg)[0]);
-    var_dump('-------------4---------------');
+    $path = explode("/", explode(" ", $arg)[0];
+      var_dump($path);
+      //この変数の値は「GET」となっているが、「bsd=>mit」となるべき
     array_shift($path);
-    var_dump('-------------5--------------');
     if( is_null($path) ) {
       $keys = array();
       while (list($key, $val) = each($this->data)) {
         array_push($keys, $key);
-        var_dump('-------------6--------------');
+        var_dump($key);
       }
-      var_dump($keys);
     }
     else if(count($path) == 2){
       $this->data[$path[0]] = $path[1];
@@ -61,7 +58,7 @@ class MechaDog extends Dog
 
 $mdog = new MechaDog('tom');
 $mdog->bark();
-var_dump('------------3---------------');
 echo $mdog->name . PHP_EOL;
 echo $mdog->age . PHP_EOL;
 $mdog->proc("GET /bsd HTTP/1.1");
+
